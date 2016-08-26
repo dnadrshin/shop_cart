@@ -1,0 +1,49 @@
+<div class="cart_list" ng-show="Cart.items.length>0">
+	<ul>
+		<li ng-repeat="item in Cart.items">
+			<div class="cart_list_img">
+				<img src="img/{{item.product.productImageName}}" alt="">
+			</div> 
+			<div class="cart_list_info">
+				<div class="cart_list_info_name">{{item.product.productName}}</div>
+				<div ng-show=item.product.productAvailable>
+					<div class="cart_list_info_id">{{item.product.productNumber}}</div>
+					<div class="cart_list_info_price">
+						${{Cart.convertMoney(item.product.price)}}
+					</div> 					
+					<div class="cart_list_info_adv">
+						<div ng-show="item.product.oldPrice">
+							<span class="cart_list_info_old_price">
+								${{Cart.convertMoney(item.product.oldPrice)}}
+							</span> you save ${{Cart.savedMoney(item)}}
+						</div>
+						<div ng-show="!item.product.oldPrice">
+							<br>
+							<br>
+						</div>
+					</div>
+				</div>
+				<div class="cart_list_info_adv red" ng-show=!item.product.productAvailable>
+					This product is no longer availeble.<br>
+					Please remove it from your cart.
+				</div>				
+				<div class="cart_list_info_result">
+					<span ng-show=item.product.productAvailable>
+						<input value={{item.amount}} type="number" ng-model=item.amount ng-change="Cart.Events.changeInput(item)">
+					</span>
+					<span class="unavail_total" ng-show=!item.product.productAvailable>		
+						Total Quantity: {{item.amount}}
+					</span>			
+					<span class="result">${{item.amount*item.product.price}}</span>
+				</div>
+			</div>
+			<!-- Close button and bottom hr -->
+			<div class="cart_list_item_del" ng-click="Cart.removeItem(item)">
+				<img src="img/x.png" alt="del">
+			</div>
+			<div class="cart_list_item_hr">
+				<hr>
+			</div>				
+		</li>
+	</ul>
+</div>

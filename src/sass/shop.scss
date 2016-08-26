@@ -1,0 +1,21 @@
+.header_menu{
+	width: 100%;
+	height: 60px;
+	background: #003378;
+	ul.header_menu_list{
+    float: right;
+    display: inline-flex;
+    margin: 0;
+		li.header_menu_el{
+			color: #fff;
+			font-weight: 600;
+			list-style: none;
+			border-left: 1px solid #003D8C;
+			position: relative;
+			.header_menu_el_text{
+				cursor: pointer;
+    			padding: 20px 36px;
+			}
+		}
+	}
+}

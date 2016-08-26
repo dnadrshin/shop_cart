@@ -1,0 +1,28 @@
+
+<!--with items-->
+<div class="card_info" ng-show="Cart.items.length>0">
+	<div class="card_info_count">You have {{Cart.totalItems()}} items in your cart</div>
+	<div class="card_info_price">
+		<span>Subtotal (USD)</span>
+		<span>${{Cart.total()}}</span>
+	</div>
+	<div>
+		<button class="btn btn-gray">View cart</button>
+		<button class="btn btn-sky">Checkout</button>
+	</div>
+</div>
+
+<!--no items-->
+<div class="card_info_no_item" ng-show="Cart.items.length==0">
+	<div class="card_info_count">You have no items in your cart</div>
+	<div class="card_info_no_item_continue">Continue Shopping</div>
+	<hr class="card_info_no_item_hr">
+	<div class="card_info_count">You have 0 items in your cart</div>
+	<div class="card_info_price">
+		<span>Subtotal (USD)</span>
+		<span>${{Cart.total()}}</span>
+	</div>
+	<div>
+
+	</div>
+</div>

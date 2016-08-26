@@ -1,0 +1,11 @@
+<div class="cart_list_unavailable" ng-show="Cart.totalUnavaliable()>0">
+	<div class="cart_list_unavailable_header">
+		<span class="cart_list_unavailable_s">!</span>
+		{{Cart.totalUnavaliable()}} Unavaliable Product
+	</div>
+	<div class="cart_list_unavailable_list">
+		<div ng-repeat="item in Cart.unavaliableItems()" class="cart_list_unavailable_item">
+			{{item.product.productName}}
+		</div>
+	</div>
+</div>

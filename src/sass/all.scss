@@ -1,0 +1,23 @@
+.container{
+	width: 1200px;
+	margin: auto;
+} 
+
+.btn-gray{
+	background: $gray;
+}
+.btn-sky{
+	background: $sky;
+}
+.btn{
+	cursor: pointer;
+	width: 220px;
+	height: 40px;
+	text-transform: uppercase;
+	color: #fff;
+	border: 0;
+	border-radius: 3px;
+	&:first-child{
+		margin-right: 18px;
+	}
+}
