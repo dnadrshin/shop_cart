@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CART</title>	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>CART</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>
 	</head>
-	<body>
+	<body ng-app="cartApp">
 	<header>
 		<div class="header_menu">
 			<div class="container">
 				<ul class="header_menu_list">
-					<li class="header_menu_el">Language(EN)</li>
-					<li class="header_menu_el">Currency($)</li>
-					<li class="header_menu_el">My Account</li>
-					<li class="header_menu_el">My Cart					
-							//= cart.html
+					<li class="header_menu_el"><div class="header_menu_el_text">Language(EN)</div></li>
+					<li class="header_menu_el"><div class="header_menu_el_text">Currency($)</div></li>
+					<li class="header_menu_el"><div class="header_menu_el_text">My Account</div></li>
+					<li class="header_menu_el" ng-controller="MainController">
+						<div class="header_menu_el_text"
+						ng-click="Cart.View.open = !Cart.View.open">
+							My Cart
+						</div>
+						<div class="cart_item_number"
+						ng-show="Cart.totalItems()>0"
+						ng-click="Cart.View.open = !Cart.View.open">
+							{{Cart.totalItems()}}
+						</div>
+						<div class="cart" ng-show="Cart.View.open">
+							<unavailableitems></unavailableitems>
+							<cartitems></cartitems>
+							<cartinfo></cartinfo>
+						</div>
 					</li>
 				</ul>
 			</div>
 		</div>
-
 	</header>
-		
 	</div>
-
-
-
-
-	</body>
-</html>
