@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('cartApp',[])
-    .controller('MainController as main', function ($scope,  $http, ItemFactory ){
+    .controller('MainController', function ($scope,  $http, ItemFactory ){
     	var vm = this;
     	$scope.Products = {
     		items: [],
