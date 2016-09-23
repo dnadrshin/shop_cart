@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('cartApp',[])
-    .controller('MainController', function ($scope,  $http, ItemFactory ){
-
+    .controller('MainController as main', function ($scope,  $http, ItemFactory ){
+    	var vm = this;
     	$scope.Products = {
     		items: [],
 			loadItems: function(){
@@ -118,12 +118,9 @@
 				}
 			}
 		}	
+
 		$scope.Products.loadItems();
-		var test = function(el){
-			console.log(el)
-		}
-		var body = document.getElementsByTagName("body")[0];
-		body.addEventListener("click", test, true );
+
 
     })
 
