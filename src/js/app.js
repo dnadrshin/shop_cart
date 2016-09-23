@@ -1,20 +1,14 @@
-
-var app = angular.module("cartApp", []);
-
 (function () {
     'use strict';
 
-    var app= angular.module('cartApp');
-    app.controller('MainController', ['$scope',  '$http',  function ($scope,  $http ){
-		
-    	$scope.Settings = {
+    angular.module('cartApp',[])
+    .controller('MainController', function ($scope,  $http, ItemFactory ){
 
-    	}
 
     	$scope.Products = {
     		items: [],
 			loadItems: function(){
-				$http.get("data/dataModel.json")
+				ItemFactory.get()
 					.then(function (response) {
 						$scope.Products.items = response.data;
 						console.log($scope.Products.items);
@@ -132,19 +126,19 @@ var app = angular.module("cartApp", []);
 		var body = document.getElementsByTagName("body")[0];
 		body.addEventListener("click", test, true );
 
-    }]);
+    })
 
-	app.directive('cartitems', function() {
+	.directive('cartitems', function() {
 	  return {
 	  	templateUrl: 'directives/cartitems.html'
 	  };
-	});
-	app.directive('unavailableitems', function() {
+	})
+	.directive('unavailableitems', function() {
 	  return {
 	  	templateUrl: 'directives/unavailableitems.html'
 	  };
-	});
-	app.directive('cartinfo', function() {
+	})
+	.directive('cartinfo', function() {
 	  return {
 	  	templateUrl: 'directives/cartinfo.html'
 	  };

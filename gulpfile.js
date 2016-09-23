@@ -137,4 +137,4 @@ gulp.task('directives:watch', function(){
     gulp.watch(path.watch.directives,['directives'])
 });
 
-gulp.task('default', ['uglify','uglify:watch','sass','sass:watch','html:watch', 'directives:watch']);
+gulp.task('default', ['uglify','uglify:watch','sass','sass:watch', 'html:build', 'html:watch', 'directives:watch']);
