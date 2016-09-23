@@ -4,7 +4,6 @@
     angular.module('cartApp',[])
     .controller('MainController', function ($scope,  $http, ItemFactory ){
 
-
     	$scope.Products = {
     		items: [],
 			loadItems: function(){
