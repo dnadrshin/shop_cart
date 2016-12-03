@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>CART</title>	
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/angular.min.js"></script>
-    <script src="js/app.js"></script> 
+    <title>CART</title>
+    <link rel="stylesheet" href="build/css/main.css">
+    <script src="build/js/vendors/angular.min.js"></script>
+    <script src="build/js/app.js"></script>
+    <script src="build/js/Items.js"></script>
 	</head>
 	<body ng-app="cartApp">
 	<header>
@@ -17,11 +18,11 @@
 					<li class="header_menu_el"><div class="header_menu_el_text">Currency($)</div></li>
 					<li class="header_menu_el"><div class="header_menu_el_text">My Account</div></li>
 					<li class="header_menu_el" ng-controller="MainController">
-						<div class="header_menu_el_text" 
+						<div class="header_menu_el_text"
 						ng-click="Cart.View.open = !Cart.View.open">
 							My Cart
-						</div>					
-						<div class="cart_item_number" 
+						</div>
+						<div class="cart_item_number"
 						ng-show="Cart.totalItems()>0"
 						ng-click="Cart.View.open = !Cart.View.open">
 							{{Cart.totalItems()}}
@@ -35,5 +36,5 @@
 				</ul>
 			</div>
 		</div>
-	</header>		
+	</header>
 	</div>

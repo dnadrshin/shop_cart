@@ -4,7 +4,7 @@
 	<div class="card_info_count">You have {{Cart.totalItems()}} items in your cart</div>
 	<div class="card_info_price">
 		<span>Subtotal (USD)</span>
-		<span>${{Cart.total()}}</span>
+		<span>$<span ng-bind="Cart.total()"></span></span>
 	</div>
 	<div>
 		<button class="btn btn-gray">View cart</button>
@@ -20,7 +20,7 @@
 	<div class="card_info_count">You have 0 items in your cart</div>
 	<div class="card_info_price">
 		<span>Subtotal (USD)</span>
-		<span>${{Cart.total()}}</span>
+		<span>$<span ng-bind="Cart.total()"></span></span>
 	</div>
 	<div>
 

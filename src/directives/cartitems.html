@@ -2,7 +2,7 @@
 	<ul>
 		<li ng-repeat="item in Cart.items">
 			<div class="cart_list_img">
-				<img src="img/{{item.product.productImageName}}" alt="">
+				<img src="build/img/{{item.product.productImageName}}" alt="">
 			</div> 
 			<div class="cart_list_info">
 				<div class="cart_list_info_name">{{item.product.productName}}</div>
@@ -14,7 +14,7 @@
 					<div class="cart_list_info_adv">
 						<div ng-show="item.product.oldPrice">
 							<span class="cart_list_info_old_price">
-								${{Cart.convertMoney(item.product.oldPrice)}}
+								$<span ng-bind="Cart.convertMoney(item.product.oldPrice)"></span>
 							</span> you save ${{Cart.savedMoney(item)}}
 						</div>
 						<div ng-show="!item.product.oldPrice">

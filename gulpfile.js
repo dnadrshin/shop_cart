@@ -85,9 +85,9 @@ gulp.task('minify-css', function() {
 
 
 gulp.task('uglify', function() {
-    gulp.src(path.watch.js)
-        .pipe(uglify()) 
-        .pipe(gulp.dest('build/js'))
+    gulp.src([path.watch.js, '!src/vendors/**'])
+        //.pipe(uglify()) 
+        .pipe(gulp.dest('build/js'));
 });
 
 
