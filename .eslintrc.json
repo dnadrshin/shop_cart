@@ -6,6 +6,10 @@
             "jsx": false
         }
     },
+    "globals": {
+        "angular": true
+    },
+    "extends": "eslint:recommended",
     "rules": {
         "semi": 2
     }

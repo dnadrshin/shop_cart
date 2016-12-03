@@ -9,15 +9,15 @@
 				},
 				dataArr:[
 				{productNumber: 411,
-				 amount:2},
+				amount:2},
 				{productNumber: 132,
-				 amount:4},
+				amount:4},
 				{productNumber: 567,
-				 amount:2},
+				amount:2},
 				{productNumber: 578,
-				 amount:1},
+				amount:1},
 				{productNumber: 243,
-				 amount:8},
+				amount:8},
 			]
 			};
 

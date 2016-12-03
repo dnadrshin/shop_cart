@@ -2,7 +2,7 @@
 	
 	"use strict";
 
-	anguar.factory('', function(){
+	angular.factory('', function(){
 		return function name(){
 			
 		};

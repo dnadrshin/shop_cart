@@ -3,19 +3,17 @@
 
     angular.module('cartApp',[])
     .controller('MainController', function ($scope,  $http, ItemFactory ){
-    	var vm = this;
-    	$scope.Products = {
-    		items: [],
+		$scope.Products = {
+			items:[],
 			loadItems: function(){
 				ItemFactory.get()
 					.then(function (response) {
 						$scope.Products.items = response.data;
-						console.log($scope.Products.items);
 						//add Products to Cart.items 
 						$scope.Products.sendToCart();
 					});
-	    	},
-	    	sendToCart: function(){
+			},
+			sendToCart: function(){
 				$scope.Products.items.forEach(function(product){
 					$scope.Cart.items.forEach(function(item){
 						if(product.productNumber==item.productNumber){
@@ -23,8 +21,8 @@
 						}
 					});
 				});
-	    	} 
-	    };
+			} 
+		};
 
 		$scope.Cart = {
 			itemsTest:[
@@ -32,15 +30,15 @@
 			],
 			items:[
 				{productNumber: 411,
-				 amount:2},
+				amount:2},
 				{productNumber: 132,
-				 amount:4},
+				amount:4},
 				{productNumber: 567,
-				 amount:2},
+				amount:2},
 				{productNumber: 578,
-				 amount:1},
+				amount:1},
 				{productNumber: 243,
-				 amount:8},
+				amount:8},
 			],
 
 
@@ -67,7 +65,7 @@
 			},
 			total: function(){
 				var result = 0;
-				$scope.Cart.items.forEach(function(el, i){
+				$scope.Cart.items.forEach(function(el){
 					if(typeof el.product!='undefined'){						
 						if(el.product.productAvailable) result = result + el.amount*el.product.price;
 					}				
@@ -77,7 +75,7 @@
 			},
 			totalItems: function(){
 				var result = 0;
-				$scope.Cart.items.forEach(function(el, i){
+				$scope.Cart.items.forEach(function(el){
 					var addAmount;
 					Number.isInteger(parseInt(el.amount))?addAmount=parseInt(el.amount):addAmount=0;
 					result = result + addAmount;
@@ -86,7 +84,7 @@
 			},
 			totalUnavaliable: function(){	
 				var result=0;
-				$scope.Cart.items.forEach(function(el, i){
+				$scope.Cart.items.forEach(function(el){
 					if(typeof el.product!='undefined'){
 						if(!el.product.productAvailable) result++;
 					}
@@ -95,7 +93,7 @@
 			},
 			unavaliableItems: function(){
 				var result = [];
-				$scope.Cart.items.forEach(function(el, i){
+				$scope.Cart.items.forEach(function(el){
 					if(typeof el.product!='undefined'){
 						if(!el.product.productAvailable) result.push(el);
 					}
@@ -125,19 +123,19 @@
     })
 
 	.directive('cartitems', function() {
-	  return {
-	  	templateUrl: 'directives/cartitems.html'
-	  };
+		return {
+			templateUrl: 'directives/cartitems.html'
+		};
 	})
 	.directive('unavailableitems', function() {
-	  return {
-	  	templateUrl: 'directives/unavailableitems.html'
-	  };
+		return {
+			templateUrl: 'directives/unavailableitems.html'
+		};
 	})
 	.directive('cartinfo', function() {
-	  return {
-	  	templateUrl: 'directives/cartinfo.html'
-	  };
+		return {
+			templateUrl: 'directives/cartinfo.html'
+		};
 	});
 
 }());
