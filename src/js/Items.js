@@ -5,7 +5,7 @@
 			var Items = {
 				elements:[],
 				get: function(){
-					return $http.get("dataModel.json")
+					return $http.get("dataModel.json");
 				},
 				dataArr:[
 				{productNumber: 411,
@@ -19,12 +19,12 @@
 				{productNumber: 243,
 				 amount:8},
 			]
-			}
+			};
 
 			return Items;
 				
 			
-		})
+		});
 
 
-})()
+})();

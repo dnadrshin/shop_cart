@@ -13,7 +13,7 @@
 						console.log($scope.Products.items);
 						//add Products to Cart.items 
 						$scope.Products.sendToCart();
-					})
+					});
 	    	},
 	    	sendToCart: function(){
 				$scope.Products.items.forEach(function(product){
@@ -21,10 +21,10 @@
 						if(product.productNumber==item.productNumber){
 							item.product = product;
 						}
-					})
-				})
-	    	}
-	    }
+					});
+				});
+	    	} 
+	    };
 
 		$scope.Cart = {
 			itemsTest:[
@@ -56,14 +56,14 @@
 				itemNumberInput: function(item){
 					if(item.amount<0)item.amount = 0;
 					if(!Number.isInteger(item.amount))item.amount = 0;
-					if(item.amount=="")item.amount = "";
+					if(item.amount==="")item.amount = "";
 				}
 			},
 			removeItem: function(item){
 				$scope.Cart.items.forEach(function(el, i){
 					if(el.productNumber==item.productNumber)
 						$scope.Cart.items.splice(i,1);
-				})
+				});
 			},
 			total: function(){
 				var result = 0;
@@ -71,7 +71,7 @@
 					if(typeof el.product!='undefined'){						
 						if(el.product.productAvailable) result = result + el.amount*el.product.price;
 					}				
-				})
+				});
 
 				return result.toLocaleString('en-US', {minimumFractionDigits: 2});
 			},
@@ -81,7 +81,7 @@
 					var addAmount;
 					Number.isInteger(parseInt(el.amount))?addAmount=parseInt(el.amount):addAmount=0;
 					result = result + addAmount;
-				})
+				});
 				return result;
 			},
 			totalUnavaliable: function(){	
@@ -90,7 +90,7 @@
 					if(typeof el.product!='undefined'){
 						if(!el.product.productAvailable) result++;
 					}
-				})
+				});
 				return result;
 			},
 			unavaliableItems: function(){
@@ -100,7 +100,7 @@
 						if(!el.product.productAvailable) result.push(el);
 					}
 						
-				})
+				});
 				return result;
 			},
 			savedMoney: function(item){
@@ -110,14 +110,14 @@
 						if(item.product.oldPrice) result=$scope.Cart.convertMoney((item.product.oldPrice-item.product.price)*item.amount);
 					}
 				}
-				return result
+				return result;
 			},
 			convertMoney: function(price){
 				if(typeof price!='undefined'){
 					return price.toLocaleString('en-US', {minimumFractionDigits: 2});
 				}
 			}
-		}	
+		};
 
 		$scope.Products.loadItems();
 

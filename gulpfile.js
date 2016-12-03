@@ -12,6 +12,7 @@ var browserSync = require('browser-sync').create();
 var sourcemaps = require('gulp-sourcemaps');
 var jshint = require('gulp-jshint');
 var reload = browserSync.reload;
+var eslint = require('gulp-eslint');
 
 
 // Static server
@@ -57,6 +58,25 @@ var path = {
     clean: './build'
 };
 
+ 
+gulp.task('lint', () => {
+    // ESLint ignores files with "node_modules" paths. 
+    // So, it's best to have gulp ignore the directory as well. 
+    // Also, Be sure to return the stream from the task; 
+    // Otherwise, the task may end before the stream has finished. 
+    return gulp.src([path.watch.js, '!src/vendors/**'])
+        // eslint() attaches the lint output to the "eslint" property 
+        // of the file object so it can be used by other modules. 
+        .pipe(eslint())
+        // eslint.format() outputs the lint results to the console. 
+        // Alternatively use eslint.formatEach() (see Docs). 
+        .pipe(eslint.format())
+        // To have the process exit with an error code (1) on 
+        // lint error, return the stream and pipe to failAfterError last. 
+        .pipe(eslint.failAfterError());
+});
+
+
 gulp.task('minify-css', function() {
     return gulp.src('css/*.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
@@ -66,7 +86,7 @@ gulp.task('minify-css', function() {
 
 gulp.task('uglify', function() {
     gulp.src(path.watch.js)
-        ///.pipe(uglify()) 
+        .pipe(uglify()) 
         .pipe(gulp.dest('build/js'))
 });
 
@@ -126,6 +146,9 @@ gulp.task('minify-css:watch', function(){
     gulp.watch(path.watch.style,['minify-css'])
 });
 
+gulp.task('lint:watch', function(){
+    gulp.watch(path.watch.js,['lint'])
+});
 gulp.task('uglify:watch', function(){
     gulp.watch(path.watch.js,['uglify'])
 });
@@ -137,4 +160,4 @@ gulp.task('directives:watch', function(){
     gulp.watch(path.watch.directives,['directives'])
 });
 
-gulp.task('default', ['uglify','uglify:watch','sass','sass:watch', 'html:build', 'html:watch', 'directives:watch']);
+gulp.task('default', ['lint', 'uglify','lint:watch', 'uglify:watch','sass','sass:watch', 'html:build', 'html:watch', 'directives:watch']);
